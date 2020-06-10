@@ -5,9 +5,18 @@ import Track from "../Track/Track";
 
 class TrackList extends React.Component {
   render() {
-    return (
-      <div className="TrackList">{console.log("TrackList: ", this.props)}</div>
-    );
+    if (this.props.tracks) {
+      const tracksArr = this.props.tracks;
+      return (
+        <div className="TrackList">
+          {tracksArr.map((track) => {
+            return <Track key={track.id} track={track} />;
+          })}
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
